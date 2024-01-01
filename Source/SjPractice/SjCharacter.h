@@ -4,10 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "InputActionValue.h"
 #include "SjCharacter.generated.h"
 
 class UCameraComponent;
 class USpringArmComponent;
+class UInputAction;
 
 UCLASS()
 class SJPRACTICE_API ASjCharacter : public ACharacter
@@ -24,7 +26,17 @@ public:
 	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "Components")
 	TObjectPtr<USpringArmComponent> SpringArm;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Input")
+	TObjectPtr<UInputAction> IA_Move;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Input")
+	TObjectPtr<UInputAction> IA_Jump;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Input")
+	TObjectPtr<UInputAction> IA_Look;
+
+	void Move(const FInputActionValue& Value);
+	void Look(const FInputActionValue& Value);
 
 protected:
 	// Called when the game starts or when spawned

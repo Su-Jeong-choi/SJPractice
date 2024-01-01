@@ -9,9 +9,18 @@
 /**
  * 
  */
+
+class UInputMappingContext;
+
 UCLASS()
 class SJPRACTICE_API ASjPlayerController : public APlayerController
 {
 	GENERATED_BODY()
+
+public:
+	virtual void BeginPlay() override;
+
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Input")
+	TObjectPtr<UInputMappingContext> DefaultIMC;
 	
 };
